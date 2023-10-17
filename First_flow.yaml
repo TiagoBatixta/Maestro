@@ -1,0 +1,37 @@
+appId: com.android.contacts
+env:
+    NOME: "Tiago Batista"
+    TELEFONE: 35435445
+---
+- launchApp
+- tapOn:
+    id: "com.android.contacts:id/floating_action_button"
+- tapOn:
+    text: "Nome Próprio"
+- inputText: ${NOME}
+- tapOn:
+    text: "Telefone"
+    index: 0 
+- inputText: ${TELEFONE}
+- hideKeyboard
+- tapOn:
+    id: "com.android.contacts:id/editor_menu_save_button"
+- runFlow:
+    when:
+      visible: ${NOME}
+    file: "Subflow.yaml"
+- assertVisible: ${NOME}
+- back
+- tapOn:
+    text: ${NOME}
+- tapOn:
+    id: "com.android.contacts:id/icon_alternate"
+- inputText: "Mensagem de exemplo para o teste do maestro, ferramenta para automacao de testes em dispositivos mobile"
+- tapOn:
+    id: "com.android.mms:id/send_button_sms"
+- extendedWaitUntil:
+    notVisible: 
+        text: "Enviado"
+    timeout: 10000
+- openLink: https://google.com
+
