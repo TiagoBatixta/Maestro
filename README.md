@@ -1,2 +1,3 @@
 # Maestro
-Repositório para teste do Maestro dev test Mobile.
+Repositório para Maestro dev test Mobile.
+Para fins de estudos da linguagem de automação.
